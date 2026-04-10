@@ -1,0 +1,38 @@
+course_name: Omusomo Gwa NSSF
+course_key: omusomo
+raw_data_folder: data/raw/omusomo
+
+is_master: false
+master_reference_file: data/processed/final_cleaned_bfc.xlsx
+
+source_files:
+  pre_course_assessment: "omusomo-gwebyensimbi-ogwa-nssf-ffoomu-y-okuwandiika-ebikwata-ku-muntu-kinnoomu-results-for*.csv"
+  post_course_assessment: "omusomo-gwebyensimbi-ogwa-nssf-okunoonyereza-oluvannyuma-lw-omusomo-results-for*.csv"
+
+has_pre_course: true
+
+# Omusomo survey uses different response column positions
+survey_response_mapping:
+  gender: Response.1
+  age_group: Response.2
+  district: Response.3
+  hub: Response.4
+
+# Luganda gender translations
+extra_gender_mappings:
+  mukyala: Female
+  mwami: Male
+
+# Luganda age group translations
+extra_age_mappings:
+  wakati wa myaka 18 ne 24: 18-24
+  wakati wa myaka 25 ne 35: 25-35
+  wakati w a myaka 36 ne 44: 36+
+  emyaka 45 nookusoba: 36+
+
+output:
+  filename: "Omusomo"
+  format: csv
+
+include_aggregation: true
+email_validation_enabled: false

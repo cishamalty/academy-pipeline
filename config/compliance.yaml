@@ -1,0 +1,25 @@
+course_name: Business Compliance
+course_key: compliance
+raw_data_folder: data/raw/compliance
+
+is_master: false
+master_reference_file: data/processed/final_cleaned_bfc.xlsx
+
+source_files:
+  pre_course_assessment: "business-compliance-all-you-need-to-know-before-we-get-started-results-for*.csv"
+  post_course_assessment: "business-compliance-all-you-need-to-know-post-course-assessment-results-for*.csv"
+
+has_pre_course: true
+
+survey_response_mapping:
+  gender: Response.1
+  age_group: Response.2
+  hub: Response.5
+  district: null
+
+output:
+  filename: "Business Compliance"
+  format: csv
+
+include_aggregation: true
+email_validation_enabled: true

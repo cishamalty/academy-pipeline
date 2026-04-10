@@ -1,0 +1,29 @@
+course_name: Career Planning
+course_key: career_planning
+raw_data_folder: data/raw/career_planning
+
+is_master: false
+master_reference_file: data/processed/final_cleaned_bfc.xlsx
+
+source_files:
+  pre_course_assessment: "career-planning-course-pre-course-assessment-results-for*.csv"
+  post_course_assessment: "career-planning-course-post-course-assessment-results-for*.csv"
+
+has_pre_course: true
+
+survey_response_mapping:
+  gender: Response.1
+  age_group: Response.2
+  hub: Response.5
+  district: null
+
+# Additional field unique to Career Planning
+additional_fields:
+  - own_a_business
+
+output:
+  filename: "Career Planning"
+  format: csv
+
+include_aggregation: true
+email_validation_enabled: true

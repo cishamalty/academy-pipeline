@@ -1,0 +1,29 @@
+course_name: Academy
+course_key: academy
+raw_data_folder: data/raw/academy
+
+# Academy is the master pipeline — its output feeds all other courses
+is_master: true
+master_output_file: data/processed/final_cleaned_bfc.xlsx
+
+source_files:
+  individual_profiling: "hi-innovator-business-foundational-course-hi-innovator-individual-profiling-form-results-for*.csv"
+  business_profiling: "hi-innovator-business-foundational-course-nssf-hi-innovator-business-profiling-form-final-results-for*.csv"
+  post_course_assessment: "hi-innovator-business-foundational-course-post-pre-course-assessment-survey-results-for*.csv"
+  enrollments: "List of Enrollments*.xlsx"
+  pre_course_assessment: "NSSF Hi-Innovator Pre-Course Assessment form public*.xlsx"
+
+has_pre_course: true
+
+survey_response_mapping:
+  gender: Response.1
+  age_group: Response.2
+  hub: Response.5
+  district: null
+
+output:
+  filename: "final_cleaned_bfc"
+  format: xlsx
+
+include_aggregation: false
+email_validation_enabled: false

@@ -1,0 +1,26 @@
+course_name: Financial Literacy 4 Artisans
+course_key: fl4_artisans
+raw_data_folder: data/raw/fl4_artisans
+
+is_master: false
+# FL 4 uses its own reference file, not the shared BFC master
+master_reference_file: data/processed/fl_a_artisans.xlsx
+
+source_files:
+  # FL 4 has no pre-course assessment
+  post_course_assessment: "financial-literacy-4-artisans-post-course-assessment-results-for*.csv"
+
+has_pre_course: false
+
+survey_response_mapping:
+  gender: Response.1
+  age_group: Response.2
+  hub: Response.5
+  district: null
+
+output:
+  filename: "FL A Artisans"
+  format: xlsx
+
+include_aggregation: false
+email_validation_enabled: false

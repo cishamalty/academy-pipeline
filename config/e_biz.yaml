@@ -1,0 +1,31 @@
+course_name: E-Business Essentials
+course_key: e_biz
+raw_data_folder: data/raw/e_biz
+
+is_master: false
+master_reference_file: data/processed/final_cleaned_bfc.xlsx
+
+source_files:
+  pre_course_assessment: "e-business-essentials-course-pre-course-assessment-results-for*.csv"
+  post_course_assessment: "e-business-essentials-course-post-course-assessment-results-for*.csv"
+
+has_pre_course: true
+
+survey_response_mapping:
+  gender: Response.1
+  age_group: Response.2
+  hub: Response.5
+  district: null
+
+# E Biz has two additional hub names not in base config
+extra_hub_mappings:
+  excel hort: Excel Hort
+  excel hort consult agribusiness incubator: Excel Hort
+  challenges uganda: Challenges Uganda
+
+output:
+  filename: "E Business"
+  format: csv
+
+include_aggregation: true
+email_validation_enabled: true

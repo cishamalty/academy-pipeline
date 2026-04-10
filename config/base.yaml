@@ -1,0 +1,346 @@
+# Base configuration — shared across all courses
+# Per-course configs override or extend these values
+
+ingestion:
+  mode: file        # change to "api" when Thinkific API access is available
+  api_key: ""       # populate when API access is granted
+  api_base_url: ""  # populate when API access is granted
+
+paths:
+  raw_data: data/raw
+  processed_data: data/processed
+  reports: reports
+  duckdb: data/academy.duckdb
+
+# Files present in every course folder
+common_files:
+  progress: "progress_*.csv"
+  user_export: "user_export_*.csv"
+
+join_key: email
+
+# All known variations of the email column name across Thinkific exports
+email_columns:
+  - email
+  - Email
+  - Email Address
+  - Student Email
+
+output:
+  date_format: "%Y-%m-%d"
+  duckdb_table_prefix: "course_"
+
+# --- SHARED CLEANING RULES ---
+
+gender:
+  valid_values:
+    - Male
+    - Female
+    - Other
+    - Prefer not to say
+  mappings:
+    male: Male
+    m: Male
+    "1": Male
+    female: Female
+    f: Female
+    "2": Female
+    other: Other
+    prefer not to say: Prefer not to say
+
+age_bins:
+  labels:
+    - Below 18
+    - 18-24
+    - 25-35
+    - 36+
+    - Not Assigned
+  mappings:
+    below 18 years: Below 18
+    18-24 years: 18-24
+    between 18 to 24: 18-24
+    "18 to 24": 18-24
+    25-35 years: 25-35
+    between 25 to 35: 25-35
+    "25 to 35": 25-35
+    between 36 to 45: 36+
+    above 45: 36+
+    36+ years: 36+
+    "36 to 45": 36+
+    above 45 years: 36+
+    not assigned: Not Assigned
+    "": Not Assigned
+
+completion_bins:
+  boundaries:
+    - 0
+    - 25
+    - 50
+    - 75
+    - 100
+  labels:
+    - 0%-25%
+    - 26%-50%
+    - 51%-75%
+    - 76%-100%
+
+hubs:
+  valid:
+    - Outbox
+    - Mubs-Eiic
+    - Miic
+    - Sbil
+    - Witu
+    - Mkazipreneur
+    - Ucu Mbale
+    - Starthub
+    - Zimba Women
+    - Curad
+    - Inpact
+    - Adc
+    - Shona
+    - Not Assigned
+  mappings:
+    outbox: Outbox
+    outbox hub: Outbox
+    mubs: Mubs-Eiic
+    mubs-eiic: Mubs-Eiic
+    mubs eiic: Mubs-Eiic
+    makerere university business school: Mubs-Eiic
+    miic: Miic
+    miic hub: Miic
+    metropolitan: Miic
+    makerere innovation and incubation center: Miic
+    sbil: Sbil
+    stanbic: Sbil
+    stanbic business incubator: Sbil
+    stanbic business incubation: Sbil
+    witu: Witu
+    women in tech: Witu
+    women in technology uganda: Witu
+    mkaziprenuer: Mkazipreneur
+    mkazipreneur: Mkazipreneur
+    mkazi: Mkazipreneur
+    ucu: Ucu Mbale
+    ucu mbale: Ucu Mbale
+    ucu innovation hub: Ucu Mbale
+    uganda christian university: Ucu Mbale
+    starthub: Starthub
+    start hub: Starthub
+    zimba: Zimba Women
+    zimba women: Zimba Women
+    curad: Curad
+    inpact: Inpact
+    adc: Adc
+    agribusiness development centre: Adc
+    shona: Shona
+    not assigned: Not Assigned
+    "": Not Assigned
+
+regions:
+  Central:
+    - Kampala
+    - Wakiso
+    - Mukono
+    - Mpigi
+    - Buikwe
+    - Kayunga
+    - Luwero
+    - Nakaseke
+    - Nakasongola
+    - Gomba
+    - Kalangala
+    - Masaka
+    - Rakai
+    - Lwengo
+    - Lyantonde
+    - Kalungu
+    - Bukomansimbi
+    - Sembabule
+  Eastern:
+    - Jinja
+    - Mbale
+    - Tororo
+    - Iganga
+    - Bugiri
+    - Busia
+    - Mayuge
+    - Namutumba
+    - Kamuli
+    - Buyende
+    - Kaliro
+    - Luuka
+    - Namayingo
+    - Soroti
+    - Kumi
+    - Kapchorwa
+    - Bukwo
+    - Sironko
+    - Bududa
+    - Manafwa
+    - Pallisa
+    - Butebo
+    - Kibuku
+    - Bulambuli
+  Northern:
+    - Gulu
+    - Lira
+    - Arua
+    - Kitgum
+    - Pader
+    - Agago
+    - Lamwo
+    - Nwoya
+    - Amuru
+    - Oyam
+    - Kole
+    - Alebtong
+    - Dokolo
+    - Apac
+    - Otuke
+    - Zombo
+    - Nebbi
+    - Pakwach
+    - Adjumani
+    - Moyo
+    - Koboko
+    - Yumbe
+    - Maracha
+    - Madi-Okollo
+  Western:
+    - Mbarara
+    - Kabale
+    - Fort Portal
+    - Kasese
+    - Hoima
+    - Masindi
+    - Bushenyi
+    - Ntungamo
+    - Rukungiri
+    - Kanungu
+    - Kisoro
+    - Bundibugyo
+    - Kyenjojo
+    - Kyegegwa
+    - Kamwenge
+    - Ibanda
+    - Isingiro
+    - Kiruhura
+    - Buhweju
+    - Mitooma
+    - Rubirizi
+    - Sheema
+    - Kagadi
+    - Kibaale
+    - Kakumiro
+    - Bunyangabu
+
+disability:
+  default: Not Disabled
+  categories:
+    Visual Impairment:
+      - blind
+      - visual
+      - sight
+      - low vision
+    Hearing Impairment:
+      - deaf
+      - hearing
+      - mute
+    Physical Disability:
+      - physical
+      - mobility
+      - wheelchair
+      - amputee
+      - limb
+    Intellectual Disability:
+      - intellectual
+      - learning disability
+      - cognitive
+    Not Disabled:
+      - none
+      - "no"
+      - not applicable
+      - n/a
+      - not disabled
+      - ""
+
+nationality:
+  default: National
+
+quarter_mapping:
+  "2024-01": Y4Q3
+  "2024-02": Y4Q3
+  "2024-03": Y4Q3
+  "2024-04": Y4Q4
+  "2024-05": Y4Q4
+  "2024-06": Y4Q4
+  "2024-07": Y5Q1
+  "2024-08": Y5Q1
+  "2024-09": Y5Q1
+  "2024-10": Y5Q2
+  "2024-11": Y5Q2
+  "2024-12": Y5Q2
+  "2025-01": Y5Q3
+  "2025-02": Y5Q3
+  "2025-03": Y5Q3
+  "2025-04": Y5Q4
+  "2025-05": Y5Q4
+  "2025-06": Y5Q4
+  "2025-07": Y6Q1
+  "2025-08": Y6Q1
+  "2025-09": Y6Q1
+  "2025-10": Y6Q2
+  "2025-11": Y6Q2
+  "2025-12": Y6Q2
+  "2026-01": Y6Q3
+  "2026-02": Y6Q3
+  "2026-03": Y6Q3
+  "2026-04": Y6Q4
+  "2026-05": Y6Q4
+  "2026-06": Y6Q4
+
+email_validation:
+  enabled: true
+  risk_score_threshold: 5
+  disposable_domains:
+    - tempmail.org
+    - mailinator.com
+    - guerrillamail.com
+    - throwaway.email
+    - yopmail.com
+    - sharklasers.com
+    - grr.la
+    - guerrillamail.info
+    - guerrillamail.biz
+    - guerrillamail.de
+    - guerrillamail.net
+    - guerrillamail.org
+    - spam4.me
+    - trashmail.com
+    - dispostable.com
+    - guerrillamailblock.com
+  domain_typos:
+    gmial.com: gmail.com
+    gmai.com: gmail.com
+    gmail.co: gmail.com
+    gamil.com: gmail.com
+    gnail.com: gmail.com
+    yahooo.com: yahoo.com
+    yaho.com: yahoo.com
+    yahoo.co: yahoo.com
+    hotmial.com: hotmail.com
+    hotmai.com: hotmail.com
+    hotmal.com: hotmail.com
+    outbok.com: outbox.co.ug
+    outbx.com: outbox.co.ug
+  fake_keywords:
+    - test
+    - demo
+    - fake
+    - dummy
+    - sample
+    - example
+    - admin
+    - noreply
+    - no-reply
