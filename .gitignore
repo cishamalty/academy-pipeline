@@ -32,5 +32,8 @@ reports/
 .DS_Store
 Thumbs.db
 
+# Logs (generated at runtime)
+logs/
+
 # VS Code
 .vscode/
