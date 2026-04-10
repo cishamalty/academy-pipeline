@@ -1,0 +1,36 @@
+# Virtual environment
+.venv/
+
+# Environment variables
+.env
+
+# Data files (raw and processed — never commit source data)
+data/raw/
+data/processed/
+
+# Python cache
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
+
+# Pytest cache
+.pytest_cache/
+
+# Ruff cache
+.ruff_cache/
+
+# DuckDB database file
+*.duckdb
+*.duckdb.wal
+
+# Reports (generated at runtime)
+reports/
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# VS Code
+.vscode/
