@@ -25,7 +25,6 @@ Usage:
   make run-course course=compliance
 """
 
-import logging
 import sys
 from datetime import datetime
 

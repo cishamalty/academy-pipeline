@@ -14,19 +14,17 @@ Academy runs through run_academy_flow() which has additional merge logic
 and writes the master BFC reference file before other courses can run.
 """
 
-import logging
 import os
 
 import pandas as pd
 import yaml
-from prefect import flow, task, get_run_logger
+from prefect import flow, get_run_logger, task
 
 from src.clean import clean_dataframe
 from src.export import export
 from src.ingest import get_ingester
 from src.quality import run_quality_checks
 from src.validate import validate_all
-
 
 # ---------------------------------------------------------------------------
 # Config loader

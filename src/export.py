@@ -16,7 +16,6 @@ optional (stakeholder convenience only).
 import logging
 import os
 from datetime import datetime
-from pathlib import Path
 
 import duckdb
 import pandas as pd
